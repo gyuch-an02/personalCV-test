@@ -3,420 +3,194 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="프론트엔드 개발자 이길호의 포트폴리오와 경력 소개">
-  <title>이길호 · 프론트엔드 개발자</title>
+  <meta name="description" content="Gyuchan An의 컴퓨테이셔널 바이올로지, 면역학, AI 연구 포트폴리오">
+  <title>Gyuchan An · Computational Biology Portfolio</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.min.css">
-  <style>
-    :root {
-      color-scheme: dark light;
-      --font-sans: "Pretendard Variable", "Inter var", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      --color-bg: #0b1220;
-      --color-surface: rgba(12, 18, 32, 0.65);
-      --color-card: rgba(17, 24, 39, 0.75);
-      --color-primary: #60a5fa;
-      --color-primary-soft: rgba(96, 165, 250, 0.16);
-      --color-text: #f8fafc;
-      --color-muted: #cbd5f5;
-      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.45);
-      --radius-lg: 24px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-sans);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      color: var(--color-text);
-      background:
-        radial-gradient(120% 120% at 0% 0%, rgba(96, 165, 250, 0.25), transparent 70%),
-        radial-gradient(120% 90% at 100% 10%, rgba(236, 72, 153, 0.18), transparent 68%),
-        linear-gradient(160deg, #020617 0%, var(--color-bg) 60%, #030712 100%);
-      min-height: 100vh;
-      padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 6vw, 5rem);
-      display: flex;
-      justify-content: center;
-    }
-
-    main {
-      width: min(1080px, 100%);
-      backdrop-filter: blur(28px);
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.76), rgba(15, 23, 42, 0.55));
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: clamp(24px, 4vw, 40px);
-      box-shadow: var(--shadow-soft);
-      padding: clamp(2.8rem, 5vw, 4.5rem) clamp(2.2rem, 6vw, 5rem);
-      position: relative;
-      overflow: hidden;
-    }
-
-    main::after {
-      content: "";
-      position: absolute;
-      inset: 12% -30% auto auto;
-      width: clamp(280px, 35vw, 420px);
-      height: clamp(280px, 35vw, 420px);
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
-      filter: blur(6px);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.8;
-    }
-
-    section,
-    header,
-    footer {
-      position: relative;
-      z-index: 1;
-    }
-
-    header.hero {
-      display: grid;
-      gap: clamp(1.2rem, 2.5vw, 2rem);
-    }
-
-    .hero__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 1.1rem;
-      border-radius: 999px;
-      background: var(--color-primary-soft);
-      color: var(--color-primary);
-      font-size: clamp(0.8rem, 1vw, 1rem);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.6rem, 5vw, 3.9rem);
-      line-height: 1.08;
-      font-weight: 700;
-      text-wrap: balance;
-    }
-
-    .hero__summary {
-      max-width: 58ch;
-      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-      color: var(--color-muted);
-      line-height: 1.7;
-    }
-
-    .hero__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.6rem;
-      border-radius: 999px;
-      font-size: clamp(0.95rem, 1vw, 1.05rem);
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .button.primary {
-      background: linear-gradient(135deg, #60a5fa 0%, #8b5cf6 100%);
-      color: #0f172a;
-      box-shadow: 0 18px 35px rgba(96, 165, 250, 0.35);
-    }
-
-    .button.ghost {
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      color: var(--color-text);
-      background: rgba(15, 23, 42, 0.3);
-    }
-
-    .button:hover {
-      transform: translateY(-2px) scale(1.01);
-    }
-
-    .panel {
-      margin-top: clamp(3rem, 6vw, 4.5rem);
-      border-radius: var(--radius-lg);
-      background: var(--color-card);
-      padding: clamp(1.8rem, 3vw, 2.6rem) clamp(1.6rem, 3vw, 2.4rem);
-      border: 1px solid rgba(94, 113, 160, 0.25);
-      box-shadow: 0 20px 60px rgba(2, 6, 23, 0.45);
-    }
-
-    .panel__title {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
-    }
-
-    .panel__title h2 {
-      margin: 0;
-      font-size: clamp(1.65rem, 3vw, 2rem);
-      font-weight: 600;
-    }
-
-    .panel__title span {
-      font-size: clamp(0.85rem, 1vw, 0.95rem);
-      color: rgba(226, 232, 240, 0.78);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: clamp(1.2rem, 2.5vw, 1.8rem);
-    }
-
-    .card {
-      padding: clamp(1.4rem, 3vw, 1.9rem);
-      border-radius: 20px;
-      background: linear-gradient(160deg, rgba(59, 80, 124, 0.42), rgba(30, 41, 59, 0.5));
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      display: grid;
-      gap: 0.85rem;
-    }
-
-    .card h3 {
-      margin: 0;
-      font-size: clamp(1.2rem, 2vw, 1.35rem);
-      font-weight: 600;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-      color: rgba(226, 232, 240, 0.85);
-      line-height: 1.7;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.35rem;
-    }
-
-    .tag {
-      padding: 0.35rem 0.85rem;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.16);
-      color: rgba(226, 232, 240, 0.9);
-      font-size: clamp(0.75rem, 0.9vw, 0.85rem);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    .timeline {
-      display: grid;
-      gap: clamp(1.4rem, 2.5vw, 1.8rem);
-      position: relative;
-      padding-left: clamp(1rem, 3vw, 1.6rem);
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: clamp(0.35rem, 1vw, 0.55rem);
-      top: 0.4rem;
-      bottom: 0.4rem;
-      width: 1px;
-      background: linear-gradient(180deg, rgba(96, 165, 250, 0.45), rgba(148, 163, 184, 0.15));
-    }
-
-    .timeline__item {
-      position: relative;
-      padding-left: clamp(0.4rem, 1vw, 0.8rem);
-      display: grid;
-      gap: 0.35rem;
-    }
-
-    .timeline__item::before {
-      content: "";
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #60a5fa, #8b5cf6);
-      left: calc(clamp(-0.05rem, 1vw, 0.15rem) * -1);
-      top: 0.5rem;
-      box-shadow: 0 0 0 6px rgba(96, 165, 250, 0.12);
-    }
-
-    .timeline__role {
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      font-weight: 600;
-    }
-
-    .timeline__meta {
-      font-size: clamp(0.85rem, 1vw, 0.95rem);
-      color: rgba(203, 213, 225, 0.8);
-    }
-
-    footer {
-      margin-top: clamp(3rem, 6vw, 4rem);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: space-between;
-      align-items: center;
-      font-size: clamp(0.85rem, 1vw, 0.95rem);
-      color: rgba(203, 213, 225, 0.72);
-    }
-
-    footer nav {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    footer a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    footer a:hover {
-      color: var(--color-primary);
-    }
-
-    @media (max-width: 720px) {
-      body {
-        padding: clamp(1.8rem, 8vw, 3rem) clamp(1rem, 5vw, 2.6rem);
-      }
-
-      main {
-        padding: clamp(2.2rem, 6vw, 3.2rem) clamp(1.2rem, 5vw, 2.4rem);
-      }
-
-      .hero__actions {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body>
   <main>
     <header class="hero">
-      <span class="hero__badge" aria-label="직무">Front-End Engineer</span>
-      <h1>데이터와 스토리텔링으로 사용자 경험을 디자인합니다.</h1>
-      <p class="hero__summary">이길호는 7년 차 프론트엔드 개발자로, 디자인 시스템과 인터랙션을 통해 브랜드 일관성을 높이고 비즈니스 지표를 개선한 경험을 보유하고 있습니다.</p>
+      <span class="hero__badge" aria-label="전문 분야">Computational Biology</span>
+      <h1>AI와 면역학을 잇는 멀티오믹스 연구로 치료 전략을 앞당깁니다.</h1>
+      <p class="hero__summary">KAIST 바이오및뇌공학과 석사과정생 안규찬은 TCR 기반 자가면역 예측, RNA-seq 분석, 학습 데이터 인사이트를 통해 인터디서플리너리 문제를 해결하고 있습니다.</p>
+      <div class="hero__meta">
+        <span>멀티오믹스 & 면역학</span>
+        <span>AI 기반 예측 모델</span>
+        <span>데이터 중심 의사결정</span>
+      </div>
       <div class="hero__actions">
-        <a class="button primary" href="#projects">대표 프로젝트 보기</a>
-        <a class="button ghost" href="mailto:hello@example.com">메일 보내기</a>
+        <a class="button primary" href="#research">연구 하이라이트 보기</a>
+        <a class="button ghost" href="personalcv.md" download>CV 다운로드</a>
       </div>
     </header>
 
-    <section id="experience" class="panel">
+    <section id="education" class="panel panel--education">
       <div class="panel__title">
-        <h2>경력 하이라이트</h2>
-        <span>최근 3년 이내</span>
+        <h2>학력</h2>
+        <span>Academic Foundation</span>
+      </div>
+      <div class="education">
+        <article class="edu-card">
+          <div class="edu-card__label">
+            <strong>KAIST · 바이오및뇌공학과 석사</strong>
+            <span class="edu-card__meta">Bio and Brain Engineering · Computational Biology · Immunology</span>
+          </div>
+          <p>컴퓨테이셔널 바이올로지, 면역학, 멀티오믹스를 아우르는 연구로 TCR 기반 자가면역 질환 예측, RNA-seq 분석, 맞춤형 학습 시스템을 탐구하고 있습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="panel panel--experience">
+      <div class="panel__title">
+        <h2>연구 & 인턴십 경험</h2>
+        <span>Hands-on Impact</span>
       </div>
       <div class="timeline">
         <article class="timeline__item">
-          <h3 class="timeline__role">시니어 프론트엔드 엔지니어 · OO커머스</h3>
-          <span class="timeline__meta">2023.06 - 현재 · React, Next.js, GraphQL</span>
-          <p>전체 페이지 로딩 속도를 37% 개선하고, 대규모 A/B 실험 도구를 도입해 전환율을 12% 증가시켰습니다.</p>
+          <h3 class="timeline__role">컴퓨테이셔널 면역학 연구자 · KAIST BBE</h3>
+          <span class="timeline__meta">2023 - 현재 · CNN · BiLSTM · Multi-omics</span>
+          <p>TCR 서열 기반 자가면역 질환 예측 모델을 재현·개선하고, PD-1/CTLA-4 면역관문 치료 전략과 바이오마커를 분석했습니다.</p>
         </article>
         <article class="timeline__item">
-          <h3 class="timeline__role">UI 플랫폼 개발 리드 · OO핀테크</h3>
-          <span class="timeline__meta">2021.03 - 2023.05 · Vue, TypeScript, Storybook</span>
-          <p>디자인 시스템을 구축해 서비스 전반의 UI 중복을 제거하고, 접근성 감사 프로세스를 정립했습니다.</p>
+          <h3 class="timeline__role">지식 추적 연구 · 한글 교육 앱</h3>
+          <span class="timeline__meta">2022 - 2023 · LSTM · SAINT · Personalization</span>
+          <p>학습 행동 데이터를 기반으로 LSTM + SAINT 모델을 고도화하고, 학습 목표별 커리큘럼 추천 로직을 설계했습니다.</p>
+        </article>
+        <article class="timeline__item">
+          <h3 class="timeline__role">웹 & 데이터 프로젝트 개발자</h3>
+          <span class="timeline__meta">2019 - 2022 · Firebase · Simulation · UX</span>
+          <p>Firebase 기반 리허설·예산 관리 도구 SamuManager와 생태·역학 시뮬레이션 교육 게임을 구축해 데이터 중심 의사결정을 지원했습니다.</p>
         </article>
       </div>
     </section>
 
-    <section id="projects" class="panel">
+    <section id="research" class="panel panel--research">
       <div class="panel__title">
-        <h2>대표 프로젝트</h2>
+        <h2>연구 하이라이트</h2>
         <span>Selected Work</span>
       </div>
-      <div class="cards">
-        <article class="card">
-          <h3>리테일 데이터 인사이트 대시보드</h3>
-          <p>상품·고객 데이터를 실시간 시각화하고, 조직별 KPI 보드를 커스터마이징할 수 있는 플랫폼을 구축했습니다.</p>
-          <div class="tags">
-            <span class="tag">Next.js</span>
-            <span class="tag">Recharts</span>
-            <span class="tag">CI/CD</span>
+      <div class="research-grid">
+        <article class="research-card">
+          <h3>TCR 기반 자가면역 예측</h3>
+          <p>CNN과 BiLSTM을 조합한 모델로 TCR 서열을 분류하고, 데이터 리샘플링 전략으로 일반화 성능을 향상시켰습니다.</p>
+          <div class="paths">
+            <span class="path">CNN</span>
+            <span class="path">BiLSTM</span>
+            <span class="path">TCR Analytics</span>
           </div>
         </article>
-        <article class="card">
-          <h3>모바일 온보딩 퍼널 최적화</h3>
-          <p>사용자 여정을 분석하여 주요 이탈 구간을 재설계하고, 가입 완료율을 18% 끌어올리는 인터랙션을 적용했습니다.</p>
-          <div class="tags">
-            <span class="tag">Vue</span>
-            <span class="tag">Motion Design</span>
-            <span class="tag">Experimentation</span>
+        <article class="research-card">
+          <h3>RNA-seq & 멀티오믹스 파이프라인</h3>
+          <p>STAR · StringTie · DESeq2 · UMI-tools를 통합한 파이프라인을 구축해 치료 반응 바이오마커 및 isoform 변화를 분석했습니다.</p>
+          <div class="paths">
+            <span class="path">RNA-seq</span>
+            <span class="path">DESeq2</span>
+            <span class="path">UMI-tools</span>
           </div>
         </article>
-        <article class="card">
-          <h3>디자인 시스템 "Northstar"</h3>
-          <p>Figma 토큰과 Storybook을 연동해 다국어·다테마를 지원하는 컴포넌트 라이브러리를 제공했습니다.</p>
-          <div class="tags">
-            <span class="tag">Design Tokens</span>
-            <span class="tag">Storybook</span>
-            <span class="tag">Accessibility</span>
+        <article class="research-card">
+          <h3>SamuManager</h3>
+          <p>React와 Firebase로 공연 팀의 리허설·예산을 관리하는 앱을 개발하고, 실시간 협업과 지표 기반 운영을 자동화했습니다.</p>
+          <div class="paths">
+            <span class="path">React</span>
+            <span class="path">Firebase</span>
+            <span class="path">Product Ops</span>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="skills" class="panel">
+    <section id="skills" class="panel panel--skills">
       <div class="panel__title">
         <h2>기술 스택</h2>
-        <span>Depth & Focus</span>
+        <span>Depth & Tools</span>
       </div>
-      <div class="cards">
-        <article class="card">
-          <h3>Frontend Craft</h3>
-          <p>React, Next.js, Vue, Svelte를 활용해 대규모 사용자 트래픽을 처리하는 SPA/MPA를 설계합니다.</p>
-          <div class="tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">Vite</span>
-            <span class="tag">Webpack</span>
-          </div>
+      <div class="skills-matrix">
+        <article class="skill-group">
+          <h3>AI & Data Science</h3>
+          <ul>
+            <li>PyTorch, Torch Lightning으로 컨트라스트·Few-shot 학습 실험</li>
+            <li>DQN, 그래프 기반 모델을 활용한 예측 개선</li>
+            <li>데이터 전처리 및 특성 공학 자동화</li>
+          </ul>
         </article>
-        <article class="card">
-          <h3>Design Systems</h3>
-          <p>디자인 토큰, 스타일 가이드, 문서화를 자동화하며, 접근성 준수와 테마화 전략을 병행합니다.</p>
-          <div class="tags">
-            <span class="tag">Storybook</span>
-            <span class="tag">Figma API</span>
-            <span class="tag">Playwright</span>
-          </div>
+        <article class="skill-group">
+          <h3>바이오인포매틱스</h3>
+          <ul>
+            <li>STAR, DESeq2, Flow Cytometry 분석 경험</li>
+            <li>RNA-seq, isoform 정량화, 멀티오믹스 통합</li>
+            <li>ELISA 등 면역 분석 실험 협업</li>
+          </ul>
         </article>
-        <article class="card">
-          <h3>Product Enablement</h3>
-          <p>데이터 기반 기능 실험과 관찰 가능성(Observability)을 구축해 팀이 빠르게 의사결정하도록 돕습니다.</p>
-          <div class="tags">
-            <span class="tag">Analytics</span>
-            <span class="tag">Experiment</span>
-            <span class="tag">DX Tooling</span>
+        <article class="skill-group">
+          <h3>Infra & Automation</h3>
+          <ul>
+            <li>SLURM, HPC, Google Colab 기반 워크로드 운영</li>
+            <li>Firebase, Notion API, n8n을 활용한 데이터 파이프라인</li>
+            <li>Observability 및 리서치 워크플로 자동화</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="leadership" class="panel panel--leadership">
+      <div class="panel__title">
+        <h2>리더십 & 활동</h2>
+        <span>Beyond the Lab</span>
+      </div>
+      <div class="leadership-list">
+        <article class="leadership-item">
+          <div>
+            <h3>뮤지컬 동아리 NMBR</h3>
+            <span class="timeline__meta">President · Actor · Director</span>
           </div>
+          <p>창작 뮤지컬을 직접 연출·출연하며 팀 운영과 스테이지 매니지먼트를 총괄, 구성원의 몰입과 협업 구조를 설계했습니다.</p>
+        </article>
+        <article class="leadership-item">
+          <div>
+            <h3>BBE Counseling Assistant</h3>
+            <span class="timeline__meta">Peer Mentoring · Community Events</span>
+          </div>
+          <p>학과 구성원의 진로 상담, 워크숍 기획, 피자 토크 등 커뮤니티 프로그램을 이끌며 네트워킹을 확장했습니다.</p>
+        </article>
+        <article class="leadership-item">
+          <div>
+            <h3>STEM 교육 프로그램</h3>
+            <span class="timeline__meta">Science Outreach · Curriculum Design</span>
+          </div>
+          <p>수학적 생물학·면역학 수업과 전략 게임 기반 학습 활동을 설계해 고등학생 대상 실험 중심 교육을 진행했습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="strengths" class="panel panel--strengths">
+      <div class="panel__title">
+        <h2>핵심 역량</h2>
+        <span>How I Work</span>
+      </div>
+      <div class="strengths">
+        <article class="strength">
+          <h3>Interdisciplinary Problem Solving</h3>
+          <p>생명과학, AI, 교육 기술을 연결하는 프레임을 구축해 복합 문제를 분석하고 실험 가능한 해결책으로 전환합니다.</p>
+        </article>
+        <article class="strength">
+          <h3>Data-informed Decision Making</h3>
+          <p>정량 지표와 사용자 인사이트를 융합해 제품과 연구 성과의 개선 방향을 제시하고 실행합니다.</p>
+        </article>
+        <article class="strength">
+          <h3>Team Leadership & Communication</h3>
+          <p>연구 협업과 크리에이티브 프로젝트를 주도하며 다양한 이해관계자와 신뢰 기반의 커뮤니케이션을 구축합니다.</p>
         </article>
       </div>
     </section>
 
     <footer>
-      <span>© 2025 이길호. 모두에게 열린 인터페이스를 만듭니다.</span>
+      <span>© <span data-current-year>2025</span> Gyuchan An. Crossing biology, AI, and education for positive impact.</span>
       <nav aria-label="소셜 링크">
-        <a href="https://github.com/your-github" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/gyuch-an02" target="_blank" rel="noreferrer">GitHub</a>
         <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="mailto:hello@example.com">Email</a>
       </nav>
